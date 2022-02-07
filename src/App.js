@@ -1,4 +1,12 @@
 import logo from "./logo.svg";
+import {
+  Button,
+  Navbar,
+  Container,
+  Nav,
+  NavDropdown,
+  Jumbotron,
+} from "react-bootstrap";
 import "./App.css";
 
 // npm start 보다는 yarn start 가 더 빠르고 안정적으로 시작할 수 있다
@@ -9,9 +17,50 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <button type="button" class="btn btn-secondary">
-        Secondary
-      </button>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#features">Features</Nav.Link>
+              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">
+                  Something
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  Separated link
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav>
+              <Nav.Link href="#deets">More deets</Nav.Link>
+              <Nav.Link eventKey={2} href="#memes">
+                Dank memes
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      <div class="main">
+        <div>
+          <h1>20% Season Off</h1>
+          <p>
+            This is a simple hero unit, a simple jumbotron-style component for
+            calling extra attention to featured content or information.
+          </p>
+          <p>
+            <Button variant="dark">Learn more</Button>{" "}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
