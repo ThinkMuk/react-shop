@@ -49,7 +49,7 @@ function App() {
         </Container>
       </Navbar>
 
-      <div class="main">
+      <div class="jumbotron">
         <div>
           <h1>20% Season Off</h1>
           <p>

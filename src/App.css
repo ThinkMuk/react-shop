@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-.main {
+.jumbotron {
   display: flex;
   align-items: center;
   justify-content: center;
