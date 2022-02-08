@@ -8,6 +8,7 @@
 }
 
 .jumbotron {
+  background-image: url(/public/images/background.jpg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +16,7 @@
   height: 400px;
   background-color: rgb(215, 215, 215);
   background-size: cover;
-  color: black;
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
