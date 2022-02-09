@@ -19,3 +19,27 @@
 
 - 간단한 반응형 정도는 bootstrap과 같은 라이브러리에서 끌어다가 쓰는 경우도 다분하다
 	ex) <div className = "col-md-4"> </div>
+
+2022-02-09 Study (afternoon) _________________________________________________________________________________________________
+
+React Router 01
+
+- react router을 사용하기 위해선 yarn add react-router-dom 이라는 커맨드를 사용해 라이브러리를 설치 해야 한다
+
+- 설치를 완료한 후, index.js에 들어가서 추가적인 설정을 해주면 react router을 사용할 준비가 끝난다
+	index.js 에는:
+			import { BrowserRouter } from "react-router-dom"; 추가
+			ReactDOM.render 에 있는 <App />에 <BrowserRouter> </BrowserRouter> 추가
+
+- <Route></Route> 를 사용할때는 path를 설정해두면 웹사이트에서 그 경로를 입력할 시 안에 적어둔 html을 띄워준다
+다만, <Route path="/temp"> 로 작성하면 기존에 있던것과 함께 다 같이 뜨기 때문에 <Route exact path ="/temp"> 를
+사용하는게 좋다
+
+- BrowserRoute 과 HashRouter의 차이점:
+	HashRouter은 더 안전하게 라우팅 할 수 있게 해줌
+	BrowserRouter 같은 경우 라우팅을 리액트가 아니라 서버에게 요청할 수도 있어서 위험
+따라서, BrowserRouter은 서버에서 서버 라우팅 방지하는 API를 작성해둬야함
+
+* 추가정보:
+	최신버전의 React Router에서는      <Route exact path="/temp"> </Route> 의 형식이 먹히지 않아
+	5.3.0 버전의 react-router-dom 을 다시 설치해줌
