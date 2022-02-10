@@ -19,6 +19,24 @@
   color: white;
 }
 
+.navbarTitle {
+  text-decoration: none;
+  color: white;
+}
+.navbarTitle:hover {
+  color: white;
+}
+
+.navbarLink {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  transition: 0.15s;
+}
+
+.navbarLink:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
