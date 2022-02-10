@@ -44,23 +44,25 @@ function App() {
                 </Link>
               </Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.1">
+                  not implemented
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  Another action
+                  not implemented
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">
-                  Something
+                  not implemented
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">
-                  Separated link
+                  not implemented
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
+              <Nav.Link href="#deets">not implemented</Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
-                Dank memes
+                not implemented
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -69,8 +71,13 @@ function App() {
 
       <Routes>
         {/* exact path는 그 페이지일때만 해당 html을 표시하는것 */}
-        <Route exact path="/" element={<Main />} />
-        <Route exact path="/detail" element={<Detail />} />
+        <Route path="/" element={<Main />} />
+        <Route
+          path="/detail/:id"
+          element={
+            <Detail getShoeImages={shoeImages} getShoeDatas={shoeDatas} />
+          }
+        />
         {/* 라우트에 컴포넌트도 넣을 수 있다! */}
       </Routes>
     </div>
