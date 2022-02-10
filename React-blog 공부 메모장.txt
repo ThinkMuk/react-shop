@@ -43,3 +43,17 @@ React Router 01
 * 추가정보:
 	최신버전의 React Router에서는      <Route exact path="/temp"> </Route> 의 형식이 먹히지 않아
 	5.3.0 버전의 react-router-dom 을 다시 설치해줌
+
+2022-02-10 Study ______________________________________________________________________________________________________________
+
+React Router 02, 03
+
+- Routes (Switch)를 알면 exact path을 사용하지 않아도 중복되게 나타지지가 않는다
+	*사용법은 <Route></Route> 되어 있는 곳에 <Routes>로 감싸주면 된다
+
+- 다른 컴포넌트에서 main에 있는 데이터를 받아올 때는 항상 props상으로 받아오는게 좋다
+- useParams 는 Route상에서 받아와지는 id를 function에 전달해 주는 역할을 함
+	*사용하기 위해선 import { useParams } from 'react-router-dom' 를 선언하고
+	* Route 의 path에서 "/temp/:id" 를 넣어둔다
+	* const { temp } = useParams(); 를 사용하면 id를 클릭할때 id의 값을 useParams()를 사용하는 temp에 전해준다
+	**** 추가공부를 더 하면서 직접 더 알아보면 좋을 듯 하다
