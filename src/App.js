@@ -36,11 +36,16 @@ function App() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link className="navbarLink" to="/">
-                Home
+              {/* todo: console error to be fixed */}
+              <Nav.Link>
+                <Link className="navbarLink" to="/">
+                  Home
+                </Link>
               </Nav.Link>
-              <Nav.Link className="navbarLink" to="/detail">
-                Detail
+              <Nav.Link>
+                <Link className="navbarLink" to="/detail">
+                  Detail
+                </Link>
               </Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">
