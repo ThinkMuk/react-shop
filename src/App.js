@@ -13,6 +13,9 @@ import Detail from "./components/Detail.js";
 // react router을 사용하기 위해선 yarn add react-router-dom 이라는 라이브러리를 설치 해야 한다
 // 설치를 완료한 후, index.js에 들어가서 추가적인 설정을 해주면 react router을 사용할 준비가 끝난다
 
+// sass란 ?
+// css에서 변수, 연산자, 함수, extend, import 와 같은 function들을 사용 가능하다
+
 function App() {
   const [shoeDatas, setShoes] = useState(shoeListdata);
   const [shoeImages, setShoeImages] = useState([
@@ -33,15 +36,11 @@ function App() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link>
-                <Link className="navbarLink" to="/">
-                  Home
-                </Link>
+              <Nav.Link className="navbarLink" to="/">
+                Home
               </Nav.Link>
-              <Nav.Link>
-                <Link className="navbarLink" to="/detail">
-                  Detail
-                </Link>
+              <Nav.Link className="navbarLink" to="/detail">
+                Detail
               </Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">

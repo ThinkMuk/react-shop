@@ -1,0 +1,40 @@
+$MainColor: #212529;
+
+.color {
+  color: $MainColor;
+}
+.my-alert {
+  background: #eeeeee;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+//이런식으로 @extend를 사용하면 모든걸 다 복붙할 필요가 없음
+.my-alert-bold {
+  @extend .my-alert;
+  font-weight: bold;
+}
+
+// nesting (중요)
+// ex) nesting을 사용하기 전인 기본 css 문법
+// div.container h4 {
+//   color: blue;
+// }
+// div.container p {
+//   color: green;
+// }
+// sass를 활용해 nesting을 사용한 css 문법
+// div.container {
+//   h4 {
+//     color: blue;
+//   }
+//   p {
+//     color: green;
+//   }
+// }
