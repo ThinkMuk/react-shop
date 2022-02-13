@@ -44,7 +44,7 @@ button.btn.btn-outline-dark {
   color: #212529;
   font-weight: bold;
 }
-
+// --Tab Animation CSS--
 //애니메이션 시작 때 적용할 CSS
 .tabTransition-enter {
   opacity: 0;
@@ -55,6 +55,7 @@ button.btn.btn-outline-dark {
   transition: all 500ms;
 }
 
+// --Alert Animation CSS--
 .alertTransition-enter {
   opacity: 0;
 }
