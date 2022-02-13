@@ -1,7 +1,10 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
+import { Nav } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "./Detail.scss";
+import { CSSTransition } from "react-transition-group";
 // useParams 는 Route상에서 받아와지는 id를 이 function에 전달해 주는 역할을 함
 
 //styled-component: css 를 미리 입혀놓은 컴포넌트
@@ -25,20 +28,22 @@ let Title = styled.h4`
 function Detail(props) {
   //alert 가 보이는지 안보이는지 저장하는 함수
   // 항상 보이는 UI가 아닌 이상 이렇게 만듦
-  const [alert, setAlert] = useState(true);
+  // const [alert, setAlert] = useState(true);
 
   // 이 navigate는 사용자가 이동한 경로를 저장해 둠
   const { id } = useParams();
   const navigate = useNavigate();
+  const [Tab, setTab] = useState(0);
+  const [aniSwitch, setAniSwitch] = useState(false);
+  const [aniAlert, setAniAlert] = useState(false);
   function decShoeStock(tempID) {
-    console.log(tempID);
     let tempShoeStock = [...props.getShoeStock];
     if (tempShoeStock[tempID] > 0) {
-      alert("상품이 판매되었습니다");
+      window.alert("Your order has been placed successfully!");
       tempShoeStock[tempID] = tempShoeStock[tempID] - 1;
       props.setShoeStock(tempShoeStock);
     } else {
-      alert("재고가 부족합니다");
+      window.alert("This product is out of stock");
     }
   }
 
@@ -47,8 +52,10 @@ function Detail(props) {
   // 따라서 useEffect(()=>{},[here]) 에 적어두면 here이라는 state가 변경이 될때만 실행이 되라는 함수가 완성이 된다
   // useEffect의 대괄호를 빈칸으로 두면 해당 component가 등장시 '한 번' 실행하고 끝나는 함수가 된다
   useEffect(() => {
+    setAniAlert(true);
     let timer = setTimeout(() => {
-      setAlert(false);
+      setAniAlert(false);
+      // setAlert(false);
     }, 2000);
     // 컴포넌트가 사라질 때 코드를 실행시킬수도 있다
     // return function 어쩌구() {실행할코드 ~~~}
@@ -63,19 +70,21 @@ function Detail(props) {
       <Box>
         <Title color="black">Detail</Title>
       </Box>
-      {alert == true ? (
+      {/* {alert == true ? ( */}
+      <CSSTransition
+        in={aniAlert}
+        classNames="alertTransition"
+        timeout={2000}
+        unmountOnExit
+      >
         <div className="my-alert">
           <p>This product is almost out of stock!</p>
         </div>
-      ) : null}
+      </CSSTransition>
+      {/* ) : null} */}
       <div className="row">
         <div className="col-md-6">
-          <img
-            src={`https://codingapple1.github.io/shop/shoes${
-              parseInt(id) + 1
-            }.jpg`}
-            width="100%"
-          />
+          <img src={`../images/shoes${parseInt(id) + 1}.jpg`} width="100%" />
         </div>
         <div className="col-md-6 mt-4">
           <h4 className="pt-5">{props.getShoeDatas[id].title}</h4>
@@ -85,8 +94,7 @@ function Detail(props) {
           <button
             className="btn btn-danger"
             onClick={() => {
-              alert("click!");
-              // decShoeStock(id);
+              decShoeStock(id);
             }}
           >
             주문하기
@@ -102,8 +110,75 @@ function Detail(props) {
           </button>
         </div>
       </div>
+
+      <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-0"
+            onClick={() => {
+              setAniSwitch(false);
+              setTab(0);
+            }}
+          >
+            Descriptions
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-1"
+            onClick={() => {
+              setAniSwitch(false);
+              setTab(1);
+            }}
+          >
+            Reviews
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-2"
+            onClick={() => {
+              setAniSwitch(false);
+              setTab(2);
+            }}
+          >
+            Questions
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <CSSTransition in={aniSwitch} classNames="tabTransition" timeout={500}>
+        <TabContent Tab={Tab} setAniSwitch={setAniSwitch} />
+      </CSSTransition>
     </div>
   );
+}
+
+function TabContent({ Tab, setAniSwitch }) {
+  useEffect(() => {
+    setAniSwitch(true);
+  });
+  if (Tab == 0) {
+    return (
+      <div>
+        <br />
+        Descriptions
+      </div>
+    );
+  } else if (Tab == 1) {
+    return (
+      <div>
+        <br />
+        Reviews
+      </div>
+    );
+  } else if (Tab == 2) {
+    return (
+      <div>
+        <br />
+        Questions
+      </div>
+    );
+  }
 }
 
 function StockInfo({ getShoeStock, getID }) {

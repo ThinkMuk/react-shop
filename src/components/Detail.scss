@@ -4,12 +4,16 @@ $MainColor: #212529;
   color: $MainColor;
 }
 .my-alert {
-  background: #eeeeee;
+  background: rgba(238, 238, 238, 0.5);
   padding: 20px;
   border-radius: 5px;
   max-width: 500px;
   width: 100%;
   margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   p {
     margin-bottom: 0;
   }
@@ -19,6 +23,51 @@ $MainColor: #212529;
 .my-alert-bold {
   @extend .my-alert;
   font-weight: bold;
+}
+
+.nav.nav-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+button.btn.btn-outline-dark {
+  margin-bottom: 20px;
+}
+.nav-link {
+  transition: 0.125s;
+  color: #212529;
+}
+.nav-link:focus,
+.nav-link:hover {
+  color: #212529;
+  font-weight: bold;
+}
+
+//애니메이션 시작 때 적용할 CSS
+.tabTransition-enter {
+  opacity: 0;
+}
+//애니메이션 동작 때 적용할 CSS
+.tabTransition-enter-active {
+  opacity: 1;
+  transition: all 500ms;
+}
+
+.alertTransition-enter {
+  opacity: 0;
+}
+.alertTransition-enter-active {
+  opacity: 1;
+  transition: all 500ms;
+}
+.alertTransition-exit {
+  opacity: 1;
+}
+.alertTransition-exit-active {
+  opacity: 0;
+  transition: all 500ms;
 }
 
 // nesting (중요)

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable */
+import React, { useState, useContext } from "react";
 import { Button, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./App.css";
 import shoeListdata from "./data.js";
@@ -26,10 +27,28 @@ import axios from "axios";
 //2.axios 설치해서 axios.get() 쓰기 - yarn add axios
 //3.쌩 자바스크립트 fetch() 쓰기
 //axios를 사용하면 JSON을 object로 알아서 바꿔주기 때문에 간편하다
+
+//간단한 데이터 전송은 모두 props를 사용해서 넘기지만, 가끔 복잡한 데이터 전달 형식이 나올때는 contextAPI를 사용하면
+//덜 헷갈리게 가져올 수 있는 이점이 생긴다 ex) 컴포넌트 안에.. 컴포넌트 안에... 컴포넌트 안에..
+//context 만들기:
+//  1. React.createContext()로 범위 생성하기 (context는 여러개 만들기도 가능)
+//  2. 같은 값을 공유할 HTML을 <범위>로 싸매기
+//  3. useContrxt(범위)로 고유된 값 사용하기
+
+//라이브러리 사용해서 간단한 animation 추가해보기
+//yarn add react-transition-group 입력
+//animation 만들기:
+//  1. <CSSTransition></CSSTransition> 으로 애니메이션 필요한 곳 감싸기
+//  2. in, classNames, timeout 넣기
+//  3. class로 애니메이션 넣기
+//  4. 원할 때 스위치 켜기 / 끄기 (버튼 누르면 스위치 끔) (컴포넌트 로드/업데이트시 스위치 켬)
+
+let stockContext = React.createContext();
+
 function App() {
   const [shoeDatas, setShoeDatas] = useState(shoeListdata);
   let [loading, setLoading] = useState(false);
-  const [shoeStock, setShoeStock] = useState([10, 11, 9]);
+  const [shoeStock, setShoeStock] = useState([10, 11, 9, 5, 1, 7]);
 
   return (
     <div className="App">
@@ -50,7 +69,7 @@ function App() {
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link className="navbarLink" to="/detail">
+                <Link className="navbarLink" to="/detail/0">
                   Detail
                 </Link>
               </Nav.Link>
@@ -114,35 +133,41 @@ function App() {
         </div>
         {/* col-md-4 같은 경우는 bootstrap에서 지원해주는 반응형이다 */}
         <div className="container">
-          <div className="row">
-            {shoeDatas.map(function (a, i) {
-              return <ShoeList key={i} tempCount={i} tempShoe={shoeDatas} />;
-            })}
-          </div>
+          <stockContext.Provider value={shoeStock}>
+            <div className="row">
+              {shoeDatas.map(function (a, i) {
+                return <ShoeList key={i} tempCount={i} tempShoe={shoeDatas} />;
+              })}
+            </div>
+          </stockContext.Provider>
         </div>
-        <Button
-          variant="outline-dark"
-          onClick={() => {
-            //post는 서버에 데이터를 보내고 싶을떄 사용
-            // axios.post("서버URL", { id: "codingapple", pw: 1234 });
+        {shoeDatas.length < 6 ? (
+          <Button
+            variant="outline-dark"
+            onClick={() => {
+              //post는 서버에 데이터를 보내고 싶을떄 사용
+              // axios.post("서버URL", { id: "codingapple", pw: 1234 });
 
-            setLoading(true);
-            axios
-              .get("https://api.jsonbin.io/b/617bfdf34a82881d6c6741a8")
-              //성공시
-              .then((result) => {
-                setLoading(false);
-                setShoeDatas([...shoeDatas, ...result.data]);
-              })
-              //실패시
-              .catch(() => {
-                setLoading(false);
-                alert("ERROR");
-              });
-          }}
-        >
-          Show more info
-        </Button>
+              setLoading(true);
+              axios
+                .get("https://api.jsonbin.io/b/617bfdf34a82881d6c6741a8")
+                //성공시
+                .then((result) => {
+                  setLoading(false);
+                  setShoeDatas([...shoeDatas, ...result.data]);
+                })
+                //실패시
+                .catch(() => {
+                  setLoading(false);
+                  alert("ERROR");
+                });
+            }}
+          >
+            Show more info
+          </Button>
+        ) : // todo: minimize function to be implemented
+        null}
+
         {loading === true ? (
           <div>
             <p>Loading ...</p>
@@ -153,19 +178,23 @@ function App() {
   }
 
   function ShoeList({ tempCount, tempShoe }) {
+    let shoeStock = useContext(stockContext);
+
     return (
       <div className="col-md-4">
-        <img
-          src={`https://codingapple1.github.io/shop/shoes${tempCount + 1}.jpg`}
-          width="100%"
-        />
+        <img src={`../images/shoes${tempCount + 1}.jpg`} width="100%" />
         <h4>{tempShoe[tempCount].title}</h4>
         <p>
+          <StockLeft tempCount={tempCount} />
           {tempShoe[tempCount].content} <br />
           {tempShoe[tempCount].price} won
         </p>
       </div>
     );
+  }
+  function StockLeft({ tempCount }) {
+    let shoeStock = useContext(stockContext);
+    return <p>Stock: {shoeStock[tempCount]}</p>;
   }
 }
 
