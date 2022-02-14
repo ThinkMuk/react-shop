@@ -154,3 +154,34 @@ yarn add react-transition-group 입력
 
 *** 삼항연산자를 활용한 화면 on/off 기능과, CSSAnimation 기능을 같이 겹쳐놓을 시, 애니메이션이 꼬이게 되는 현상이 있으므로
 삼항연산자를 활용한 on/off 기능을 꺼야 Animation이 원활하게 돌아간다 *** (이에 대한 예시는 Detail.js 40번째 줄부터 참고)
+
+2022-02-14 Study ______________________________________________________________________________________________________________
+Redux 1, Redux 2 Study
+
+- Redux 사용:
+ ContextAPI와 비슷한 종류
+
+- redux 쓰는 이유?
+ 1. props 없이 모든 컴포넌트가 state를 갖다쓰기 가능
+ 2. state 데이터 관리기능
+
+- redux 셋팅하기:
+ 1. import{Provider}
+ 2. <Provider></Provider> 로 <App> 감싸기
+ 3. createStore()안에 state 저장
+ 4. <Provider></Provider> 에 props 전송
+
+- 컴포넌트에서 store에 있는 state 쓰려면
+ 1. function 만들기
+ 2. export default connect()()
+ 3. store 데이터를 props로 등록하기
+
+- Redux에서 필수적으로 알아야 하는 용어 4가지
+1. Action
+2. Reducer
+3. Store
+4. dispatch
+
+- Redux에선 state 데이터의 수정방법을 미리 정의한다
+* 사실 지금 프로젝트는 redux 쓸 이유가 크게 없다 (조그만 사이트에선 딱히 필요없음)
+하지만 프로젝트의 규모가 커지면 커질수록 간편해지며 버그가 걸릴 위험도가 줄어든다
