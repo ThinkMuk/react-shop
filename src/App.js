@@ -6,6 +6,7 @@ import shoeListdata from "./data.js";
 import { Link, Route, Routes, Switch } from "react-router-dom";
 import Detail from "./components/Detail.js";
 import axios from "axios";
+import Cart from "./components/Cart";
 
 let stockContext = React.createContext();
 
@@ -75,6 +76,7 @@ function App() {
             />
           }
         />
+        <Route path="/cart" element={<Cart />} />
         {/* 라우트에 컴포넌트도 넣을 수 있다! */}
       </Routes>
     </div>
