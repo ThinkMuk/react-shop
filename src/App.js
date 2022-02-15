@@ -29,13 +29,13 @@ function App() {
             <Nav className="me-auto">
               {/* todo: console error to be fixed */}
               <Nav.Link>
-                <Link className="navbarLink" to="/">
-                  Home
+                <Link className="navbarLink" to="/cart">
+                  Cart
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 <Link className="navbarLink" to="/detail/0">
-                  Detail
+                  Today's Shoes
                 </Link>
               </Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
@@ -133,7 +133,16 @@ function App() {
           </Button>
         ) : // todo: minimize function to be implemented
         null}
-
+        {shoeDatas.length >= 6 ? (
+          <Button
+            variant="outline-dark"
+            onClick={() => {
+              setShoeDatas(shoeDatas.slice(0, 3));
+            }}
+          >
+            Minimize tab
+          </Button>
+        ) : null}
         {loading === true ? (
           <div>
             <p>Loading ...</p>
