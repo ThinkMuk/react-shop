@@ -1,6 +1,30 @@
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: rgba(255, 255, 255, 0.05);
+  color: #303840;
+}
 .btn-secondary {
   margin-right: 5px;
   color: rgb(0, 0, 0);
   background-color: #ffffff;
   border-color: #6c757d;
+}
+.discount-reminder {
+  background: rgba(238, 238, 238, 0.75);
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  p {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+}
+button.btn.btn-outline-dark {
+  margin-bottom: 0px;
+  margin: 5px;
 }

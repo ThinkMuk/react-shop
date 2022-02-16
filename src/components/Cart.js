@@ -5,14 +5,15 @@ import "./Cart.scss";
 
 function getCart(state) {
   return {
-    state: state,
+    state: state.reducer,
+    alertIsOpen: state.alertReducer,
   };
 }
 
 function Cart(props) {
   return (
     <div>
-      <Table striped bordered hover variant="dark">
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
@@ -53,6 +54,20 @@ function Cart(props) {
           );
         })}
       </Table>
+      {/* redux 연습용 */}
+      {props.alertIsOpen === true ? (
+        <div className="discount-reminder">
+          <p>Buy now and get a 20% discount!</p>
+          <Button
+            variant="outline-dark"
+            onClick={() => {
+              props.dispatch({ type: "alertIsClosed" });
+            }}
+          >
+            Close
+          </Button>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -5,11 +5,24 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 
+let alertInit = true;
+
+//사실 이런 독립적인 함수들은 Redux를 사용할 필요가 없다 (연습용으로 사용해본것)
+function alertReducer(state = alertInit, action) {
+  if (action.type === "alertIsClosed") {
+    return false;
+  } else return state;
+}
+// 10, 11, 9, 5, 1, 7
 let initState = [
-  { id: 0, name: "tempShoes1", quan: 2 },
-  { id: 1, name: "tempShoes2", quan: 5 },
+  { id: 0, name: "White and Black", quan: 10 },
+  { id: 1, name: "Red Knit", quan: 11 },
+  { id: 2, name: "Grey Yorndan", quan: 9 },
+  { id: 3, name: "Flowey", quan: 5 },
+  { id: 4, name: "Baby shoes", quan: 1 },
+  { id: 5, name: "Red Herring", quan: 7 },
 ];
 
 function reducer(state = initState, action) {
@@ -31,7 +44,7 @@ function reducer(state = initState, action) {
   }
 }
 
-let store = createStore(reducer);
+let store = createStore(combineReducers({ reducer, alertReducer }));
 
 ReactDOM.render(
   <React.StrictMode>
