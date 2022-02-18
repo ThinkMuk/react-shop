@@ -7,6 +7,7 @@ import { Link, Route, Routes, Switch } from "react-router-dom";
 import Detail from "./components/Detail.js";
 import axios from "axios";
 import Cart from "./components/Cart";
+//todo: price detail click link to be implemented
 
 let stockContext = React.createContext();
 

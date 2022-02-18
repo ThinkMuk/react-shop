@@ -16,17 +16,16 @@ function alertReducer(state = alertInit, action) {
   } else return state;
 }
 // 10, 11, 9, 5, 1, 7
-let initState = [
-  { id: 0, name: "White and Black", quan: 10 },
-  { id: 1, name: "Red Knit", quan: 11 },
-  { id: 2, name: "Grey Yorndan", quan: 9 },
-  { id: 3, name: "Flowey", quan: 5 },
-  { id: 4, name: "Baby shoes", quan: 1 },
-  { id: 5, name: "Red Herring", quan: 7 },
-];
+const initState = [];
 
+//action에 있는 data들은 모두 dispatch가 되어 전달된 data이다
 function reducer(state = initState, action) {
-  if (action.type === "stockIncrease") {
+  if (action.type === "addItem") {
+    let temp = [...state];
+    //todo: 같은 상품을 장바구니에 담을 시 새로운 항목 추가가 아닌 갯수 추가
+    temp.push(action.data);
+    return temp;
+  } else if (action.type === "stockIncrease") {
     let temp = [...state];
     temp[action.data].quan++;
     return temp;

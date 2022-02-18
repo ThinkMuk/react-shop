@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "./Detail.scss";
 import { CSSTransition } from "react-transition-group";
+import { connect } from "react-redux";
 // useParams 는 Route상에서 받아와지는 id를 이 function에 전달해 주는 역할을 함
 
 let Box = styled.div`
@@ -78,6 +79,10 @@ function Detail(props) {
             className="btn btn-danger"
             onClick={() => {
               decShoeStock(id);
+              props.dispatch({
+                type: "addItem",
+                data: { id: id, name: props.getShoeDatas[id].title, quan: 1 },
+              });
             }}
           >
             주문하기
@@ -168,4 +173,11 @@ function StockInfo({ getShoeStock, getID }) {
   return <p>Stock : {getShoeStock[getID]}</p>;
 }
 
-export default Detail;
+function getDetail(state) {
+  return {
+    state: state.reducer,
+    alertIsOpen: state.alertReducer,
+  };
+}
+
+export default connect(getDetail)(Detail);

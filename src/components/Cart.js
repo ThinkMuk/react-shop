@@ -2,6 +2,8 @@ import React from "react";
 import { Table, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import "./Cart.scss";
+//todo1: cart prices delete button to be implemented
+//todo2: reset cart button need to be implemented
 
 function getCart(state) {
   return {
@@ -22,6 +24,7 @@ function Cart(props) {
             <th>Stock Change</th>
           </tr>
         </thead>
+        {props.state.length <= 0 ? <ItemIsEmpty /> : null}
         {props.state.map((a, i) => {
           return (
             <tbody>
@@ -68,6 +71,14 @@ function Cart(props) {
           </Button>
         </div>
       ) : null}
+    </div>
+  );
+}
+
+function ItemIsEmpty() {
+  return (
+    <div className="item-empty-reminder">
+      <p>Your shopping cart is empty!</p>
     </div>
   );
 }
