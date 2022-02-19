@@ -1,18 +1,16 @@
 import React from "react";
 import { Table, Button } from "react-bootstrap";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import "./Cart.scss";
 //todo1: cart prices delete button to be implemented
 //todo2: reset cart button need to be implemented
 
-function getCart(state) {
-  return {
-    state: state.reducer,
-    alertIsOpen: state.alertReducer,
-  };
-}
-
-function Cart(props) {
+function Cart() {
+  //state를 더 쉽게 꺼내쓰는 방법 (신문법)
+  //redux안에 있던 모든 state를 여기 state로 return하는것
+  const state = useSelector((state) => state.reducer);
+  const alertIsOpen = useSelector((state) => state.alertReducer);
+  const dispatch = useDispatch();
   return (
     <div>
       <Table striped bordered hover>
@@ -24,20 +22,20 @@ function Cart(props) {
             <th>Stock Change</th>
           </tr>
         </thead>
-        {props.state.length <= 0 ? <ItemIsEmpty /> : null}
-        {props.state.map((a, i) => {
+        {state.length <= 0 ? <ItemIsEmpty /> : null}
+        {state.map((a, i) => {
           return (
             <tbody>
               <tr>
                 <td>{i + 1}</td>
-                <td>{props.state[i].name}</td>
-                <td>{props.state[i].quan}</td>
+                <td>{state[i].name}</td>
+                <td>{state[i].quan}</td>
                 <td>
                   <Button
                     variant="secondary"
                     size="sm"
                     onClick={() => {
-                      props.dispatch({ type: "stockIncrease", data: i });
+                      dispatch({ type: "stockIncrease", data: i });
                     }}
                   >
                     +
@@ -46,7 +44,7 @@ function Cart(props) {
                     variant="secondary"
                     size="sm"
                     onClick={() => {
-                      props.dispatch({ type: "stockDecrease", data: i });
+                      dispatch({ type: "stockDecrease", data: i });
                     }}
                   >
                     -
@@ -58,13 +56,14 @@ function Cart(props) {
         })}
       </Table>
       {/* redux 연습용 */}
-      {props.alertIsOpen === true ? (
+      {console.log(alertIsOpen)}
+      {alertIsOpen === true ? (
         <div className="discount-reminder">
           <p>Buy now and get a 20% discount!</p>
           <Button
             variant="outline-dark"
             onClick={() => {
-              props.dispatch({ type: "alertIsClosed" });
+              dispatch({ type: "alertIsClosed" });
             }}
           >
             Close
@@ -83,5 +82,12 @@ function ItemIsEmpty() {
   );
 }
 
-export default connect(getCart)(Cart);
-// export default Cart;
+// function getCart(state) {
+//   return {
+//     state: state.reducer,
+//     alertIsOpen: state.alertReducer,
+//   };
+// }
+
+// export default connect(getCart)(Cart);
+export default Cart;

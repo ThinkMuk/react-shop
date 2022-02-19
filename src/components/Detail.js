@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "./Detail.scss";
 import { CSSTransition } from "react-transition-group";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 // useParams 는 Route상에서 받아와지는 id를 이 function에 전달해 주는 역할을 함
 
 let Box = styled.div`
@@ -20,6 +20,10 @@ function Detail(props) {
   //alert 가 보이는지 안보이는지 저장하는 함수
   // 항상 보이는 UI가 아닌 이상 이렇게 만듦
   // const [alert, setAlert] = useState(true);
+
+  const state = useSelector((state) => state.reducer);
+  const alertIsOpen = useSelector((state) => state.alertReducer);
+  const dispatch = useDispatch();
 
   // 이 navigate는 사용자가 이동한 경로를 저장해 둠
   const { id } = useParams();
@@ -79,7 +83,7 @@ function Detail(props) {
             className="btn btn-danger"
             onClick={() => {
               decShoeStock(id);
-              props.dispatch({
+              dispatch({
                 type: "addItem",
                 data: { id: id, name: props.getShoeDatas[id].title, quan: 1 },
               });
@@ -173,11 +177,14 @@ function StockInfo({ getShoeStock, getID }) {
   return <p>Stock : {getShoeStock[getID]}</p>;
 }
 
-function getDetail(state) {
-  return {
-    state: state.reducer,
-    alertIsOpen: state.alertReducer,
-  };
-}
+// ** Old style redux **
+// function getDetail(state) {
+//   return {
+//     state: state.reducer,
+//     alertIsOpen: state.alertReducer,
+//   };
+// }
 
-export default connect(getDetail)(Detail);
+// export default connect(getDetail)(Detail);
+
+export default Detail;
