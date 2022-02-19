@@ -19,6 +19,15 @@
   color: white;
 }
 
+.list-text-design {
+  color: #303840;
+  text-decoration: none;
+  transition: 0.25s;
+}
+.list-text-design:hover {
+  color: black;
+}
+
 .navbarTitle {
   text-decoration: none;
   color: white;

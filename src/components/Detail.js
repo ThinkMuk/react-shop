@@ -38,7 +38,7 @@ function Detail(props) {
       tempShoeStock[tempID] = tempShoeStock[tempID] - 1;
       props.setShoeStock(tempShoeStock);
     } else {
-      window.alert("This product is out of stock");
+      window.alert("Sorry, This product is out of stock");
     }
   }
 

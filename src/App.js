@@ -7,7 +7,6 @@ import { Link, Route, Routes, Switch } from "react-router-dom";
 import Detail from "./components/Detail.js";
 import axios from "axios";
 import Cart from "./components/Cart";
-//todo: price detail click link to be implemented
 
 let stockContext = React.createContext();
 
@@ -158,13 +157,15 @@ function App() {
 
     return (
       <div className="col-md-4">
-        <img src={`../images/shoes${tempCount + 1}.jpg`} width="100%" />
-        <h4>{tempShoe[tempCount].title}</h4>
-        <p>
-          <StockLeft tempCount={tempCount} />
-          {tempShoe[tempCount].content} <br />
-          {tempShoe[tempCount].price} won
-        </p>
+        <Link className="list-text-design" to={`/detail/${tempCount}`}>
+          <img src={`../images/shoes${tempCount + 1}.jpg`} width="100%" />
+          <h4>{tempShoe[tempCount].title}</h4>
+          <p>
+            <StockLeft tempCount={tempCount} />
+            {tempShoe[tempCount].content} <br />
+            {tempShoe[tempCount].price} won
+          </p>
+        </Link>
       </div>
     );
   }
