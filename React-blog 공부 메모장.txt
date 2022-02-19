@@ -185,3 +185,33 @@ Redux 1, Redux 2 Study
 - Redux에선 state 데이터의 수정방법을 미리 정의한다
 * 사실 지금 프로젝트는 redux 쓸 이유가 크게 없다 (조그만 사이트에선 딱히 필요없음)
 하지만 프로젝트의 규모가 커지면 커질수록 간편해지며 버그가 걸릴 위험도가 줄어든다
+
+2022-02-19 Study ______________________________________________________________________________________________________________
+Redux 3, Redux 4, Redux 5 Study
+
+- *** redux의 신문법 **** :
+	예전 같은 경우, 직접 function을 만들어서 props를 거쳐 redux에서 받아오는 형식을 사용했다
+	ex) 
+		 function getCart(state) {
+		   return {
+		     state: state.reducer,
+		     alertIsOpen: state.alertReducer,
+		   };
+		 }
+		 export default connect(getCart)(Cart);
+
+	하지만 새로나온 문법의 경우, useSelector 과 useDispatch만 사용하면 쉽게 props를 거치치 않고도 가져올 수 있다
+	ex)
+		//* function Cart() 안에 적을것
+		  const state = useSelector((state) => state.reducer);
+		  const alertIsOpen = useSelector((state) => state.alertReducer);
+		  const dispatch = useDispatch();
+		export default Cart;
+
+- dispatch를 할 때 data를 실어 보내는 방법:
+	받아오는 index함수에서는 reducer함수 내에서 action을 이용해 받아올 수 있다
+	(action.data 를 하면 해당 action.type에서 받아온 데이터를 사용할 수 있다)
+
+	데이터를 실어오는 법은, dispatch를 사용할 때
+		dispatch ({ type: "temp" data: { . . . } })
+	와 같은 방식으로 data를 실어 보내면 된다
