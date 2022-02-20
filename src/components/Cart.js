@@ -2,7 +2,8 @@ import React from "react";
 import { Table, Button } from "react-bootstrap";
 import { connect, useDispatch, useSelector } from "react-redux";
 import "./Cart.scss";
-//todo1: cart prices delete button to be implemented
+//todo1: product price tab to be implemented
+//todo2: total price function to be implemented
 
 function Cart() {
   //state를 더 쉽게 꺼내쓰는 방법 (신문법)
@@ -18,6 +19,7 @@ function Cart() {
             <th>#</th>
             <th>Product name</th>
             <th>Stock</th>
+            <th>Price</th>
             <th>Stock Change</th>
           </tr>
         </thead>
@@ -28,6 +30,7 @@ function Cart() {
                 <td>{i + 1}</td>
                 <td>{state[i].name}</td>
                 <td>{state[i].quan}</td>
+                <td></td>
                 <td>
                   <Button
                     variant="secondary"
