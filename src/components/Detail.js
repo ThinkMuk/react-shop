@@ -83,6 +83,7 @@ function Detail(props) {
             className="btn btn-danger"
             onClick={() => {
               decShoeStock(id);
+              console.log(id);
               dispatch({
                 type: "addItem",
                 data: { id: id, name: props.getShoeDatas[id].title, quan: 1 },

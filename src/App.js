@@ -131,8 +131,7 @@ function App() {
           >
             Show more info
           </Button>
-        ) : // todo: minimize function to be implemented
-        null}
+        ) : null}
         {shoeDatas.length >= 6 ? (
           <Button
             variant="outline-dark"

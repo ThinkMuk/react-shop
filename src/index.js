@@ -21,10 +21,20 @@ const initState = [];
 //action에 있는 data들은 모두 dispatch가 되어 전달된 data이다
 function reducer(state = initState, action) {
   if (action.type === "addItem") {
-    let temp = [...state];
-    //todo: 같은 상품을 장바구니에 담을 시 새로운 항목 추가가 아닌 갯수 추가
-    temp.push(action.data);
-    return temp;
+    // array 안에 있던 a라는 데이터가 temp와 일치하는가
+    const searchCart = state.findIndex((a) => {
+      return a.id === action.data.id;
+    });
+    console.log(searchCart);
+    if (searchCart >= 0) {
+      let temp = [...state];
+      temp[searchCart].quan++;
+      return temp;
+    } else {
+      let temp = [...state];
+      temp.push(action.data);
+      return temp;
+    }
   } else if (action.type === "stockIncrease") {
     let temp = [...state];
     temp[action.data].quan++;

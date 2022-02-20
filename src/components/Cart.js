@@ -3,7 +3,6 @@ import { Table, Button } from "react-bootstrap";
 import { connect, useDispatch, useSelector } from "react-redux";
 import "./Cart.scss";
 //todo1: cart prices delete button to be implemented
-//todo2: reset cart button need to be implemented
 
 function Cart() {
   //state를 더 쉽게 꺼내쓰는 방법 (신문법)
@@ -56,7 +55,6 @@ function Cart() {
         })}
       </Table>
       {/* redux 연습용 */}
-      {console.log(alertIsOpen)}
       {alertIsOpen === true ? (
         <div className="discount-reminder">
           <p>Buy now and get a 20% discount!</p>
