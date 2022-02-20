@@ -20,7 +20,12 @@ const initState = [];
 
 //action에 있는 data들은 모두 dispatch가 되어 전달된 data이다
 function reducer(state = initState, action) {
-  if (action.type === "addItem") {
+  if (action.type === "clearCart") {
+    let temp = [...state];
+    temp = [];
+    window.alert("Your items are now removed! Enjoy your new shopping!");
+    return temp;
+  } else if (action.type === "addItem") {
     // array 안에 있던 a라는 데이터가 temp와 일치하는가
     const searchCart = state.findIndex((a) => {
       return a.id === action.data.id;

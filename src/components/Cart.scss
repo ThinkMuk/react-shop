@@ -23,6 +23,15 @@
     margin-bottom: 0;
   }
 }
+.btn-dark {
+  position: absolute;
+  margin-top: 40px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+}
 .discount-reminder {
   background: rgba(238, 238, 238, 0.75);
   padding: 20px;

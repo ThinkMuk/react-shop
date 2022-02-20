@@ -21,7 +21,6 @@ function Cart() {
             <th>Stock Change</th>
           </tr>
         </thead>
-        {state.length <= 0 ? <ItemIsEmpty /> : null}
         {state.map((a, i) => {
           return (
             <tbody>
@@ -53,11 +52,25 @@ function Cart() {
             </tbody>
           );
         })}
+        {state.length <= 0 ? (
+          <ItemIsEmpty />
+        ) : (
+          <Button
+            variant="dark"
+            onClick={() => {
+              dispatch({ type: "clearCart" });
+            }}
+          >
+            Clear Cart
+          </Button>
+        )}
       </Table>
       {/* redux 연습용 */}
       {alertIsOpen === true ? (
         <div className="discount-reminder">
-          <p>Buy now and get a 20% discount!</p>
+          <p>✨EVENT✨</p>
+          Buy now and get a 20% discount!
+          <br />
           <Button
             variant="outline-dark"
             onClick={() => {
