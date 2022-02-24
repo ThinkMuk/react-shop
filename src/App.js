@@ -93,7 +93,14 @@ function App() {
               give.
             </p>
             <p>
-              <Button variant="dark">Learn more</Button>{" "}
+              <Button
+                variant="dark"
+                onClick={() => {
+                  window.alert("Event Period: 2022-02-20 ~ 2022-08-20");
+                }}
+              >
+                Learn more
+              </Button>{" "}
             </p>
           </div>
         </div>
