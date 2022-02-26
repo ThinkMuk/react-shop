@@ -215,3 +215,41 @@ Redux 3, Redux 4, Redux 5 Study
 	데이터를 실어오는 법은, dispatch를 사용할 때
 		dispatch ({ type: "temp" data: { . . . } })
 	와 같은 방식으로 data를 실어 보내면 된다
+
+2022-02-26 Study ______________________________________________________________________________________________________________
+
+** 동기, 비동기 (추가적인 공부도 더 하면 좋을듯 함) **
+
+-자바스크립트는 일반적인 코드를 작성하면 synchronous 하게 처리됨 (위에서 아래로 내려오는 형식)
+
+-하지만, 몇몇 시간이 좀 걸리는 몇몇 함수들은 asynchronus 하게 처리가 되기 때문에 이를 조심해야 한다
+ex)
+
+	console.log(1+1)
+	axios로 get요청하고나서 console.log(1+2) 실행
+	console.log(1+3)
+이런 코드는 2->4->3이 출력됨 (그 이유는 3을 출력하는 코드가 asynchronus 처리를 지원하는 코드라 그렇다)
+
+-또한 useState에 존재하는 setName과 같은 함수들도 비동기적(asynchronus)로 처리가 되기 때문에 이를 조심해야 한다
+
+이를 주의하면서 코드를 작성하면 오류를 보다 더 많이 줄일 수 있을 것 같다
+
+-함수나 오브젝트는 선언해서 사용하는게 메모리 할당 때문에 그렇다 (재렌더링 될 때 새로 메모리 할당이 계속 돼 효율이 안좋다)
+- margin, width, padding 과 같은 레이아웃 잡는 속성들은 변경하면 렌더링 시간이 오래걸린다 
+(애니메이션을 막 주지 말고 되도록이면 transform 을 활용하는게 좋다)
+-App.js 방문시 Detail, Cart 다 미리 로드해놓으면 부담이 갈 수 있다 이럴때 바로 lazy loading을 하면 된다
+ex)
+	import Cart from "./components/Cart.js";
+같은 경우는
+	const Cart = lazy(() => {
+	  return import("./components/Cart.js");
+	});
+와 같이 바꿔주고
+
+component 가 실행되고 있는 곳에 
+	<Suspense fallback={<div>Loading...</div>}>
+              <Cart />
+            </Suspense>
+와 같이 감싸주면 된다
+
+-크롬 확장 프로그램에서 React Dev Tools를 설치해 사용하면 보다 나은 환경에서 개발을 할 수 있다
