@@ -25,7 +25,7 @@ function Cart() {
         </thead>
         {state.map((a, i) => {
           return (
-            <tbody>
+            <tbody key={i}>
               <tr>
                 <td>{i + 1}</td>
                 <td>{state[i].name}</td>

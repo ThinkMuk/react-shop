@@ -1,12 +1,18 @@
 /* eslint-disable */
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, lazy, Suspense } from "react";
 import { Button, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./App.css";
 import shoeListdata from "./data.js";
 import { Link, Route, Routes, Switch } from "react-router-dom";
-import Detail from "./components/Detail.js";
 import axios from "axios";
-import Cart from "./components/Cart";
+// import Detail from "./components/Detail.js";
+const Detail = lazy(() => {
+  return import("./components/Detail.js");
+});
+// import Cart from "./components/Cart.js";
+const Cart = lazy(() => {
+  return import("./components/Cart.js");
+});
 
 let stockContext = React.createContext();
 
@@ -69,14 +75,23 @@ function App() {
         <Route
           path="/detail/:id"
           element={
-            <Detail
-              getShoeDatas={shoeDatas}
-              getShoeStock={shoeStock}
-              setShoeStock={setShoeStock}
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Detail
+                getShoeDatas={shoeDatas}
+                getShoeStock={shoeStock}
+                setShoeStock={setShoeStock}
+              />
+            </Suspense>
           }
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Cart />
+            </Suspense>
+          }
+        />
         {/* 라우트에 컴포넌트도 넣을 수 있다! */}
       </Routes>
     </div>
