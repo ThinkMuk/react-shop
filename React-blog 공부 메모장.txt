@@ -253,3 +253,20 @@ component 가 실행되고 있는 곳에
 와 같이 감싸주면 된다
 
 -크롬 확장 프로그램에서 React Dev Tools를 설치해 사용하면 보다 나은 환경에서 개발을 할 수 있다
+
+2022-02-27 Study ______________________________________________________________________________________________________________
+
+PWA(progressive Web App)을 사용해 웹을 모바일앱 처럼 사용할 수가 있다
+
+pwa의 장점:
+	1. 설치 마케팅 비용 적음
+	2. 아날로그 유저들을 배려가 가능하다
+	3. html css js 만으로도 앱을 만들수 있다
+	4. 푸시알림, 센서 등
+
+설치방법:
+	 npx create-react-app 프로젝트명 --template cra-template-pwa
+를 터미널에 입력
+
+index.js 하단에 
+	serviceWorkerRegistration.unregister(); 를 -> serviceWorkerRegistration.register(); 로 변경함
