@@ -270,3 +270,29 @@ pwa의 장점:
 
 index.js 하단에 
 	serviceWorkerRegistration.unregister(); 를 -> serviceWorkerRegistration.register(); 로 변경함
+
+2022-03-02 Study ______________________________________________________________________________________________________________
+
+state 데이터를 기억하게 하려면
+	-서버로 보내서 DB에 저장하기
+	-browser의 저장공간 (local storage) 에 저장해놓기 (반영구적으로 저장이 가능하다)
+
+- Local Storage 사용법
+
+localStorage.setItem('name', 'kim') /  자료저장
+name이라는 key로 kim을 저장함
+localStorge.getItem('name') /  자료출력
+name이라는 key를 가진 데이터를 불러옴
+localStorage.removeItem('name') /  자료삭제
+name이라는 key를 가진 데이터를 삭제함
+
+localStorage에 object 자료
+	ex) localStorage.setItem('arr', [1,2,3])
+	    localStorage.setItem('obj', {name: "obj} )
+과 같은 값을 그냥 저장하면 값이 깨진다 (따음표 친 문자나, 숫자만 저장이 가능하다)
+따라서, 문자처럼 저장을 해야 한다 (문자로 저장해서 json으로 만들기)
+	ex) localStorage.setItem ( 'obj', JSON.stringify({name:kim}) )
+이걸 내보내면 (localStorage.getItem('obj'))
+string형식대로 나와서
+	JSON.parse(a)
+로 내보내야 온전한 object로 나온다
