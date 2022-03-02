@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState, useContext, lazy, Suspense } from "react";
+import React, { useState, useContext, lazy, Suspense, useEffect } from "react";
 import { Button, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import "./App.css";
 import shoeListdata from "./data.js";
@@ -20,6 +20,9 @@ function App() {
   const [shoeDatas, setShoeDatas] = useState(shoeListdata);
   let [loading, setLoading] = useState(false);
   const [shoeStock, setShoeStock] = useState([10, 11, 9, 5, 1, 7]);
+
+  //todo: localStorage history UI to be added
+  localStorage.setItem("watched", JSON.stringify([]));
 
   return (
     <div className="App">

@@ -41,9 +41,19 @@ function Detail(props) {
       window.alert("Sorry, This product is out of stock");
     }
   }
+  function saveWatched(tempID) {
+    var arr = localStorage.getItem("watched");
+    arr = JSON.parse(arr);
+
+    arr.push(tempID);
+    arr = new Set(arr);
+    arr = [...arr];
+    localStorage.setItem("watched", JSON.stringify(arr));
+  }
 
   useEffect(() => {
     setAniAlert(true);
+    saveWatched(id);
     let timer = setTimeout(() => {
       setAniAlert(false);
       // setAlert(false);
