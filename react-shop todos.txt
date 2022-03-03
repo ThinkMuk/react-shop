@@ -1,0 +1,11 @@
+1. localStorage를 활용해 메인페이지나 detail 페이지에 watched UI 추가 (되도록이면 watched function도 다시 손보기)
+
+2. detail에 구매하기 버튼 -> 카트에 담기로 수정
+
+3. 가능하면 data들 모두 redux에 담아놓기
+
+4. cart에 구매하기 버튼 추가 (구매시 stock 감소 적용시키기) / 단, stock 이상을 벗어날 시 구매불가 alert 출력
+
+5. cart에 구매 액수 표시 및 총 가격 표시
+
+6. jumbotron 사진 위치 가능하면 수정
