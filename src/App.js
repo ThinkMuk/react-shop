@@ -37,16 +37,12 @@ function App() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               {/* todo: console error to be fixed */}
-              <Nav.Link>
-                <Link className="navbarLink" to="/cart">
-                  Cart
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link className="navbarLink" to="/detail/0">
-                  Today's Shoes
-                </Link>
-              </Nav.Link>
+              <Link className="navbarLink" to="/cart">
+                Cart
+              </Link>
+              <Link className="navbarLink" to="/detail/0">
+                Today's Shoes
+              </Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">
                   not implemented
@@ -184,8 +180,8 @@ function App() {
         <Link className="list-text-design" to={`/detail/${tempCount}`}>
           <img src={`../images/shoes${tempCount + 1}.jpg`} width="100%" />
           <h4>{tempShoe[tempCount].title}</h4>
+          <StockLeft tempCount={tempCount} />
           <p>
-            <StockLeft tempCount={tempCount} />
             {tempShoe[tempCount].content} <br />
             {tempShoe[tempCount].price} won
           </p>
