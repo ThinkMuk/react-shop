@@ -9,5 +9,3 @@
 5. cart에 구매 액수 표시 및 총 가격 표시
 
 6. jumbotron 사진 위치 가능하면 수정
-
-7. console error 고쳐놓기
