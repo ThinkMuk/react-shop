@@ -1,4 +1,4 @@
-1. localStorage를 활용해 메인페이지나 detail 페이지에 watched UI 추가 (되도록이면 watched function도 다시 손보기)
+1. View History watched UI to be updated / button click-move function to be implemented
 
 2. detail에 구매하기 버튼 -> 카트에 담기로 수정
 
