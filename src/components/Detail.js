@@ -75,6 +75,7 @@ function Detail(props) {
         timeout={2000}
         unmountOnExit
       >
+        {/* todo: console warning to be fixed */}
         <div className="my-alert">
           <p>This product is almost out of stock!</p>
         </div>

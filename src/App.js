@@ -13,6 +13,9 @@ const Detail = lazy(() => {
 const Cart = lazy(() => {
   return import("./components/Cart.js");
 });
+const ViewHistory = lazy(() => {
+  return import("./components/ViewHistory.js");
+});
 
 let stockContext = React.createContext();
 
@@ -43,6 +46,9 @@ function App() {
               <Link className="navbarLink" to="/detail/0">
                 Today's Shoes
               </Link>
+              <Link className="navbarLink" to="/viewHistory">
+                View History
+              </Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">
                   not implemented
@@ -58,12 +64,6 @@ function App() {
                   not implemented
                 </NavDropdown.Item>
               </NavDropdown>
-            </Nav>
-            <Nav>
-              <Nav.Link href="#deets">not implemented</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                not implemented
-              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -88,6 +88,14 @@ function App() {
           element={
             <Suspense fallback={<div>Loading...</div>}>
               <Cart />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/viewHistory"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <ViewHistory getShoeDatas={shoeDatas} />
             </Suspense>
           }
         />
