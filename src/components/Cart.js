@@ -55,19 +55,19 @@ function Cart() {
             </tbody>
           );
         })}
-        {state.length <= 0 ? (
-          <ItemIsEmpty />
-        ) : (
-          <Button
-            variant="dark"
-            onClick={() => {
-              dispatch({ type: "clearCart" });
-            }}
-          >
-            Clear Cart
-          </Button>
-        )}
       </Table>
+      {state.length <= 0 ? (
+        <ItemIsEmpty />
+      ) : (
+        <Button
+          variant="dark"
+          onClick={() => {
+            dispatch({ type: "clearCart" });
+          }}
+        >
+          Clear Cart
+        </Button>
+      )}
       {/* redux 연습용 */}
       {alertIsOpen === true ? (
         <div className="discount-reminder">
