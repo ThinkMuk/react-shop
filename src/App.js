@@ -161,7 +161,7 @@ function App() {
             Show more info
           </Button>
         ) : null}
-        {shoeDatas.length >= 6 ? (
+        {/* {shoeDatas.length >= 6 ? (
           <Button
             variant="outline-dark"
             onClick={() => {
@@ -170,7 +170,7 @@ function App() {
           >
             Minimize tab
           </Button>
-        ) : null}
+        ) : null} */}
         {loading === true ? (
           <div>
             <p>Loading ...</p>
