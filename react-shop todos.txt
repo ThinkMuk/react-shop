@@ -1,4 +1,4 @@
-1. View History watched UI to be updated / button click-move function to be implemented
+1. View History watched UI to be updated (사진 보이는 형식으로 재수정) / button click-move function to be implemented
 
 2. detail에 구매하기 버튼 -> 카트에 담기로 수정
 
