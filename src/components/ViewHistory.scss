@@ -21,11 +21,25 @@ $MainColor: #212529;
   border-collapse: separate;
 }
 
-.btn-group-sm > .btn,
-.btn-sm {
-  display: table;
-  position: relative;
-  margin-bottom: 5px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.table > :not(:first-child) {
+  border-top: 0px solid currentColor;
 }
+
+@media (min-width: 768px) {
+  .table {
+    display: block;
+  }
+  .center {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+}
+
+// .btn-group-sm > .btn,
+// .btn-sm {
+//   display: table;
+//   position: relative;
+//   margin-bottom: 5px;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
