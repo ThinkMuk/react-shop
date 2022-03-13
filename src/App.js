@@ -39,7 +39,6 @@ function App() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              {/* todo: console error to be fixed */}
               <Link className="navbarLink" to="/cart">
                 Cart
               </Link>
@@ -143,6 +142,10 @@ function App() {
               //post는 서버에 데이터를 보내고 싶을떄 사용
               // axios.post("서버URL", { id: "codingapple", pw: 1234 });
 
+              //LocalStorage 가 초기화 되지 않게 다른 곳에 저장을 해둔 뒤, (157 이동)
+              var LocalTemp = localStorage.getItem("watched");
+              LocalTemp = JSON.parse(LocalTemp);
+
               setLoading(true);
               axios
                 .get("https://api.jsonbin.io/b/617bfdf34a82881d6c6741a8")
@@ -150,6 +153,9 @@ function App() {
                 .then((result) => {
                   setLoading(false);
                   setShoeDatas([...shoeDatas, ...result.data]);
+
+                  //다시 불러옴으로서 api를 불러오고 난 뒤 History가 안사라지도록 함
+                  localStorage.setItem("watched", JSON.stringify(LocalTemp));
                 })
                 //실패시
                 .catch(() => {
