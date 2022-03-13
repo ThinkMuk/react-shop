@@ -2,14 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ViewHistory.scss";
 
-function visitedArray() {
-  var temp = JSON.parse(localStorage.getItem("watched"));
-  console.log(temp.length);
-  return temp;
-}
-
 function ViewHistory({ getShoeDatas }) {
-  const visited = visitedArray();
+  const visited = JSON.parse(localStorage.getItem("watched"));
 
   //   todo: UI, click-move function to be implemented
   return (

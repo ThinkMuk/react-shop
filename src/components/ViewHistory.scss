@@ -26,10 +26,8 @@ $MainColor: #212529;
 }
 
 @media (min-width: 768px) {
-  .table {
-    display: block;
-  }
   .center {
+    float: left;
     flex: 0 0 auto;
     width: 33.33333333%;
   }
