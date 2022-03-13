@@ -1,8 +1,6 @@
-1. View History watched UI to be updated (사진 보이는 형식으로 재수정) / button click-move function to be implemented
+2. detail에 구매하기 버튼 -> 카트에 담기로 수정 
 
-1-1. View History arrange CSS todo
-
-2. detail에 구매하기 버튼 -> 카트에 담기로 수정
+2-1. 주문하기 클릭 시 local Storage가 초기화 되는 버그 수정... 가능하면 하기 (솔직히 Redux 쓰는게 더 좋을 듯 함)
 
 3. 가능하면 data들 모두 redux에 담아놓기
 
@@ -11,5 +9,3 @@
 5. cart에 구매 액수 표시 및 총 가격 표시
 
 6. jumbotron 사진 위치 가능하면 수정
-
-7. Detail-CSSTransition-div / console warning to be fixed
