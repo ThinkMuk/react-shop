@@ -105,7 +105,7 @@ function Detail(props) {
                 type: "addItem",
                 data: { id: id, name: props.getShoeDatas[id].title, quan: 1 },
               });
-
+              console.log(localStorage.getItem("watched"));
               localStorage.setItem("watched", JSON.stringify(LocalTemp));
             }}
           >

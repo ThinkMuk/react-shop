@@ -26,8 +26,8 @@ function reducer(state = initState, action) {
     window.alert("Your items are now removed! Enjoy your new shopping!");
     return temp;
   } else if (action.type === "addItem") {
-    var LocalTemp = localStorage.getItem("watched");
-    LocalTemp = JSON.parse(LocalTemp);
+    // var LocalTemp = localStorage.getItem("watched");
+    // LocalTemp = JSON.parse(LocalTemp);
 
     // array 안에 있던 a라는 데이터가 temp와 일치하는가
     const searchCart = state.findIndex((a) => {
