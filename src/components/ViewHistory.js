@@ -8,7 +8,6 @@ function ViewHistory({ getShoeDatas }) {
     JSON.parse(localStorage.getItem("watched"))
   );
 
-  //   todo: UI, click-move function to be implemented
   return (
     <div className="container">
       <div className="title">
