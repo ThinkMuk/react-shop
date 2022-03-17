@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import "./ViewHistory.scss";
 
 function ViewHistory({ getShoeDatas }) {
-  const visited = JSON.parse(localStorage.getItem("watched"));
+  const [visited, setVisited] = useState(
+    JSON.parse(localStorage.getItem("watched"))
+  );
 
   //   todo: UI, click-move function to be implemented
   return (
@@ -36,6 +39,17 @@ function ViewHistory({ getShoeDatas }) {
           </div>
         )}
       </div>
+      {visited.length <= 0 ? null : (
+        <Button
+          variant="outline-dark"
+          onClick={() => {
+            localStorage.setItem("watched", JSON.stringify([]));
+            setVisited([]);
+          }}
+        >
+          Clear History
+        </Button>
+      )}
     </div>
   );
 }
@@ -49,3 +63,15 @@ function ItemIsEmpty() {
 }
 
 export default ViewHistory;
+
+{
+  /* <Button
+variant="outline-dark"
+onClick={() => {
+  localStorage.setItem("watched", JSON.stringify([]));
+  setVisited([]);
+}}
+>
+Clear History
+</Button> */
+}
