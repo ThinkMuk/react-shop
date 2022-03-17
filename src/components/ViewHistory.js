@@ -27,10 +27,10 @@ function ViewHistory({ getShoeDatas }) {
                       src={`../images/shoes${parseInt(a) + 1}.jpg`}
                       width="100%"
                     />
-                    <h4>{getShoeDatas[a].title}</h4>
+                    <h4>{getShoeDatas[a]?.title}</h4>
                     <p>
-                      {getShoeDatas[a].content} <br />
-                      {getShoeDatas[a].price} won
+                      {getShoeDatas[a]?.content} <br />
+                      {getShoeDatas[a]?.price} won
                     </p>
                   </Link>
                 </div>
@@ -63,15 +63,3 @@ function ItemIsEmpty() {
 }
 
 export default ViewHistory;
-
-{
-  /* <Button
-variant="outline-dark"
-onClick={() => {
-  localStorage.setItem("watched", JSON.stringify([]));
-  setVisited([]);
-}}
->
-Clear History
-</Button> */
-}
