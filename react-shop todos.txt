@@ -1,3 +1,5 @@
+1. 로컬 서버에서는 되는데 vercel에 배포 후 ViewHistory 작동 안되는 원인 알아오기/ 고치기 + * session storage와의 차이점 알아두기
+
 2. detail에 구매하기 버튼 -> 카트에 담기로 수정 
 
 3. 가능하면 data들 모두 redux에 담아놓기 (데이터 정리 좀 해두기)
