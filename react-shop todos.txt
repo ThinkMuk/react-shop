@@ -1,4 +1,8 @@
-1. 로컬 서버에서는 되는데 vercel에 배포 후 ViewHistory 작동 안되는 원인 알아오기/ 고치기 + * session storage와의 차이점 알아두기
+1. session storage와의 차이점 알아보고 / local Storage-> session storage로 바꾸기
+
+1-1. 로컬 서버에서는 되는데 vercel에 배포 후 ViewHistory 작동 안되는 원인 알아오기/ 고치기 (해결 완료)
+https://velog.io/@op032/%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%ED%95%B4%EA%B2%B0%ED%95%B4%EB%B3%B4%EC%9E%90-TypeError-Cannot-read-property-title-of-undefined
+다시 읽고 studyNote에 정리 작성해서 공부하기
 
 2. detail에 구매하기 버튼 -> 카트에 담기로 수정 
 
