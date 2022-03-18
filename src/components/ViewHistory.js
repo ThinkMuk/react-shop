@@ -5,7 +5,7 @@ import "./ViewHistory.scss";
 
 function ViewHistory({ getShoeDatas }) {
   const [visited, setVisited] = useState(
-    JSON.parse(localStorage.getItem("watched"))
+    JSON.parse(sessionStorage.getItem("watched"))
   );
 
   return (
@@ -42,7 +42,7 @@ function ViewHistory({ getShoeDatas }) {
         <Button
           variant="outline-dark"
           onClick={() => {
-            localStorage.setItem("watched", JSON.stringify([]));
+            sessionStorage.setItem("watched", JSON.stringify([]));
             setVisited([]);
           }}
         >

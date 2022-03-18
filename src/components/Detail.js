@@ -39,19 +39,19 @@ function Detail(props) {
       tempShoeStock[tempID] = tempShoeStock[tempID] - 1;
       props.setShoeStock(tempShoeStock);
 
-      console.log(localStorage.getItem("watched"));
+      console.log(sessionStorage.getItem("watched"));
     } else {
       window.alert("Sorry, This product is out of stock");
     }
   }
   function saveWatched(tempID) {
-    var arr = localStorage.getItem("watched");
+    var arr = sessionStorage.getItem("watched");
     arr = JSON.parse(arr);
 
     arr.push(tempID);
     arr = new Set(arr);
     arr = [...arr];
-    localStorage.setItem("watched", JSON.stringify(arr));
+    sessionStorage.setItem("watched", JSON.stringify(arr));
   }
 
   useEffect(() => {
@@ -96,17 +96,11 @@ function Detail(props) {
           <button
             className="btn btn-danger"
             onClick={() => {
-              // todo? : 주문하기를 클릭하고 난 뒤 localStorage가 초기화 되는 버그 (w/ line 109)
-              var LocalTemp = localStorage.getItem("watched");
-              LocalTemp = JSON.parse(LocalTemp);
-
               decShoeStock(id);
               dispatch({
                 type: "addItem",
                 data: { id: id, name: props.getShoeDatas[id].title, quan: 1 },
               });
-              console.log(localStorage.getItem("watched"));
-              localStorage.setItem("watched", JSON.stringify(LocalTemp));
             }}
           >
             주문하기

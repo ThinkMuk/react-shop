@@ -26,8 +26,8 @@ function App() {
 
   //todo: localStorage history UI to be added
   useEffect(() => {
-    localStorage.getItem("watched") == null
-      ? localStorage.setItem("watched", JSON.stringify([]))
+    sessionStorage.getItem("watched") == null
+      ? sessionStorage.setItem("watched", JSON.stringify([]))
       : null;
   }, []);
   // localStorage.getItem("watched");
@@ -166,7 +166,7 @@ function App() {
             Show more info
           </Button>
         ) : null}
-        {shoeDatas.length >= 6 ? (
+        {/* {shoeDatas.length >= 6 ? (
           <Button
             variant="outline-dark"
             onClick={() => {
@@ -175,7 +175,7 @@ function App() {
           >
             Minimize tab
           </Button>
-        ) : null}
+        ) : null} */}
         {loading === true ? (
           <div>
             <p>Loading ...</p>
